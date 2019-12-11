@@ -1,0 +1,24 @@
+For each of the calls to the following recursive function below, indicate what value is returned:
+
+string recursionMystery6(string s) {
+    if (s.length() == 0) {
+        return s;
+    } else if (s.length() % 2 == 0) {
+        string rest = s.substr(0, s.length() - 1);
+        string last = s.substr(s.length() - 1, 1);
+        return last + recursionMystery6(rest);
+    } else {
+        string first = s.substr(0, 1);
+        string rest = s.substr(1);
+        return "(" + first + ")" + recursionMystery6(rest);
+    }
+}
+
+recursionMystery6("hi");	
+Answer: i(h)
+
+recursionMystery6("quirk");	
+Answer: (q)k(u)r(i)
+
+recursionMystery6("computer");	
+Answer: (c)e(o)t(m)u(p)

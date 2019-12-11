@@ -1,0 +1,29 @@
+For each of the calls to the following recursive function below, indicate what output is produced:
+
+void recursionMystery4(int n) {
+    if (n <= 1) {
+        cout << "*";
+    } else if (n == 2) {
+        recursionMystery4(n - 1);
+        cout << "*";
+    } else {
+        cout << "(";
+        recursionMystery4(n - 2);
+        cout << ")";
+    }
+}
+
+recursionMystery4(2);	
+Answer: **
+
+recursionMystery4(3);	
+Answer: (*)
+
+recursionMystery4(4);	
+Answer: (**)
+
+recursionMystery4(6);	
+Answer: ((**))
+
+recursionMystery4(9);	
+Answer: ((((*))))

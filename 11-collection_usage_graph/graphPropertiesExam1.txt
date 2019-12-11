@@ -1,0 +1,76 @@
+Consider the following crudely-drawn graph, and answer the following questions about it:
+
+     6       2
+ A <---> B <---- C
+ |       |       |
+2|       |1      |1
+ |       |       |
+ V   8   V   2   V
+ E ----> F <---- G
+ |       ^       |
+3|       |2      |5
+ |       |       |
+ V   1   |   1   V
+ H ----> I ----> J
+
+Is the graph directed or undirected?	
+a. directed
+b. undirected
+Answer: 
+
+Is the graph weighted or unweighted?	
+a. weighted
+b. unweighted
+Answer: 
+
+Is the graph connected?	
+a. not connected
+b. weakly connected
+c. connected
+d. strongly connected
+Answer: 
+
+Is the graph cyclic?	
+a. cyclic
+b. acyclic
+Answer: 
+  
+What are the in-degree and out-degree of vertex A (as two integers, separated by spaces)?	
+Answer: 
+
+What are the in-degree and out-degree of vertex B?	
+Answer: 
+
+What are the in-degree and out-degree of vertex C?	
+Answer: 
+
+What are the in-degree and out-degree of vertex E?	
+Answer: 
+
+What are the in-degree and out-degree of vertex F?	
+Answer: 
+
+What are the in-degree and out-degree of vertex G?	
+Answer: 
+
+What are the in-degree and out-degree of vertex H?	
+Answer: 
+
+What are the in-degree and out-degree of vertex I?	
+Answer: 
+
+What are the in-degree and out-degree of vertex J?	
+Answer: 
+
+Write the order that a depth-first search (DFS) would visit vertexes if it were looking for a path from vertex A to vertex I. Assume that any "for-each" loop over neighbors returns them in ABC order. Write the vertex names in order, separated by commas.	
+Answer: 
+
+Write the path that such a DFS would return.	
+Answer: 
+
+Write the order that a breadth-first search (BFS) would visit vertexes if it were looking for a path from vertex C to vertex H. Assume that any "for-each" loop over neighbors returns them in ABC order. Write the vertex names in order, separated by commas.	
+Answer: 
+
+Write the path that such a BFS would return.	
+Answer: 
+

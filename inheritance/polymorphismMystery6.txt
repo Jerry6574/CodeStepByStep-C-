@@ -1,0 +1,80 @@
+Consider the following classes; assume that each is defined in its own file.
+
+class Amazon : public Facebook {
+public:
+    virtual void b() {
+        cout << "AM B" << endl;
+        a();
+    }
+
+    virtual void c() {
+        cout << "AM C" << endl;
+        Facebook::c();
+    }
+
+    virtual void d() {
+        cout << "AM D" << endl;
+        c();
+    }
+};
+
+class Microsoft : public Google {
+public:
+    virtual void b() {
+        cout << "MS B" << endl;
+        a();
+    }
+
+    virtual void c() {
+        cout << "MS C" << endl;
+        Google::c();
+    }
+};
+
+class Google {
+public:
+    virtual void a() {
+        c();
+        cout << "G A" << endl;
+    }
+
+    virtual void c() {
+        cout << "G C" << endl;
+    }
+};
+​
+class Facebook : public Google {
+public:
+    virtual void a() {
+        cout << "FB A" << endl;
+    }
+
+    virtual void c() {
+        cout << "FB C" << endl;
+    }
+};
+Now assume that the following variables are defined:
+
+Google*   var1 = new Facebook();
+Facebook* var2 = new Amazon();
+Google*   var3 = new Amazon();
+Google*   var4 = new Microsoft();
+
+In the table below, indicate in the right-hand column the output produced by the statement in the left-hand column. If the statement produces more than one line of output, indicate the line breaks with slashes as in "x / y / z" to indicate three lines of output with "x" followed by "y" followed by "z". If the statement does not compile, write "COMPILER ERROR". If a statement would crash at runtime or cause unpredictable behavior, write "CRASH".
+
+									Output: 
+var1->a();							FB A
+var1->b();							COMPILER ERROR
+var1->c();							FB C
+var2->a();							FB A
+var2->b();							COMPILER ERROR
+var2->c();							AM C/FB C
+var3->a();							FB A
+var3->b();							COMPILER ERROR
+var4->a();							MS C/G C/G A
+((Facebook*) var1)->a();			FB A
+((Facebook*) var1)->d();			COMPILER ERROR
+((Amazon*) var2)->d();				AM D/AM C/FB C
+((Microsoft*) var3)->b();			CRASH
+((Facebook*) var4)->a();			CRASH
+((Facebook*) var4)->b();			COMPILER ERROR

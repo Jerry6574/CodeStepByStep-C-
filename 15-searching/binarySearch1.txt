@@ -1,0 +1,11 @@
+Suppose we are performing a binary search on a sorted vector initialized as follows:
+
+           // index     0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
+Vector<int> numbers = {-5, -1,  0,  3,  9, 14, 19, 24, 33, 41, 56, 62, 70, 88, 99};
+int index = binarySearch(numbers, 18);
+
+Write the indexes of the elements that would be examined by the binary search (the mid values in our algorithm's code) and write the value that would be returned from the search.
+
+
+indexes examined: 7, 3, 5, 6
+value returned:   -1

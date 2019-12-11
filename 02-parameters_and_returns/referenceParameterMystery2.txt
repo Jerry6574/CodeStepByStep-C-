@@ -1,0 +1,25 @@
+What is the output from the following C++ program?
+
+void sentence(string& major, string fred, string& foo) {
+    cout << "Many a " << foo << " in the " << fred << " of " << major << endl;
+    major[0] = 'X';
+    foo[1] = 'Z';
+}
+​
+int main() {
+    string major = "fred";
+    string fred = "computer";
+    string computer = "department";
+    string department = "student";
+    string student = "major";
+​
+    sentence(major, fred, department);
+    sentence(student, department, major);
+    sentence(fred, "major", student);
+    return 0;
+}
+
+output	
+Many a student in the computer of fred
+Many a Xred in the sZudent of major
+Many a Xajor in the major of computer

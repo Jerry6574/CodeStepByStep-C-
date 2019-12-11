@@ -1,0 +1,46 @@
+Consider the following crudely-drawn graph, and answer the following questions about it:
+
+A     B----C
+|     |\_   
+|     |  \_ 
+D-----E    F
+
+Is the graph directed or undirected?	
+a. directed
+b. undirected
+Answer: b. undirected
+
+Is the graph weighted or unweighted?	
+a. weighted
+b. unweighted
+Answer: b. unweighted
+
+Is the graph connected?	
+a. not connected
+b. weakly connected
+c. connected
+d. strongly connected
+Answer: c. connected
+
+Is the graph cyclic?	
+a. cyclic
+b. acyclic
+Answer: b. acyclic
+ 
+What is the degree of vertex A?
+Answer: 1
+
+What is the degree of vertex B?	
+Answer: 3
+
+What is the degree of vertex C?	
+Answer: 1
+
+What is the degree of vertex D?	
+Answer: 2
+
+What is the degree of vertex E?	
+Answer: 2
+
+What is the degree of vertex F?	
+Answer: 1

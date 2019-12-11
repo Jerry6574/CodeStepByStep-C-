@@ -1,0 +1,28 @@
+For each call to the following recursive function, write the output that is produced as it would appear on the console. Recall that relational operators like < and > compare strings by alphabetical order; for example, "a" is less than "b".
+
+void recursionMystery7(string s) {
+    if (s.length() <= 1) {
+        cout << s;
+    } else {
+        string first = s.substr(0, 1);
+        string last  = s.substr(s.length() - 1, 1);
+        string mid   = s.substr(1, s.length() - 2);
+        if (first < last) {
+            recursionMystery7(mid);
+            cout << last << toUpperCase(first);
+        } else {
+            cout << "[" << first << "]";
+            recursionMystery7(mid);
+            cout << last;
+        }
+    }
+}
+
+recursionMystery7("abcd");	
+Answer: cBdA
+
+recursionMystery7("leonard");	
+Answer: [l][o]narEd
+
+recursionMystery7("breakfast");	
+Answer: [e]kfAasRtB

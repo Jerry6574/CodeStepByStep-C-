@@ -1,0 +1,27 @@
+Given the following sorted vector of integers:
+
+//     0   1   2   3   4   5   6   7   8    9  10  11  12  13
+Vector<int> v;
+v += -23, -5,  9,  14, 15, 18, 23, 24, 25, 27, 34, 62, 85, 87;
+
+What indexes are examined in a search for each value, and what value is returned?
+
+sequential search for 27
+a. examines 0, 1, 2, 3, 4, 5, 6, 7, 8, 9; returns 27
+b. examines 0, 1, 2, 3, 4, 5, 6, 7, 8, 9; returns 9
+c. examines 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13; returns 27
+d. examines 13, 12, 11, 10, 9; returns 9
+e. examines 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13; returns 9
+(order shuffled)
+
+Answer: b. examines 0, 1, 2, 3, 4, 5, 6, 7, 8, 9; returns 9
+
+binary search for 27
+a. examines 7, 10, 9; returns 9
+b. examines 6, 8, 10; returns 9
+c. examines 6, 10, 8, 9; returns 9
+d. examines 6, 9; returns 9
+e. examines 6, 3, 1; returns -1
+(order shuffled)
+
+Answer: c. examines 6, 10, 8, 9; returns 9

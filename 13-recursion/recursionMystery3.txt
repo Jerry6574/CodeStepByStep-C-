@@ -1,0 +1,26 @@
+For each of the calls to the following recursive function below, indicate what output is produced:
+
+int recursionMystery3(int n) {
+    if (n < 0) {
+        return -recursionMystery3(-n);
+    } else if (n < 10) {
+        return (n + 1) % 10;
+    } else {
+        return 100 * recursionMystery3(n / 10) + (n + 1) % 10;
+    }
+}
+
+recursionMystery3(7)
+Answer: 8
+	
+recursionMystery3(42)	
+Answer: 503
+
+recursionMystery3(385)	
+Answer: 40906
+
+recursionMystery3(-790)	
+Answer: -80001
+
+recursionMystery3(89294)	
+Answer: 900030005

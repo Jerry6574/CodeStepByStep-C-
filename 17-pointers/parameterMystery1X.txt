@@ -1,0 +1,41 @@
+The following code produces 5 lines of output. What is the output? Write each line of output as it would appear on the console.
+
+For the purposes of this problem, assume that the variables in main are stored at the following memory addresses:
+
+main's a variable is stored at address 0xaa00
+main's b variable is stored at address 0xbb00
+main's c variable is stored at address 0xcc00
+main's d variable is stored at address 0xdd00
+main's e variable is stored at address 0xee00
+any memory dynamically allocated on the heap will be at address 0x555500
+
+int parameterMystery1X(int a, int& b, int* c) {
+    b++;
+    a += *c;
+    cout << b << " " << *c << " " << a << " " << c << endl;
+    c = &a;
+    return a - b;
+}
+​
+int main() {
+    int a = 4;
+    int* b = new int(8);
+    int c = -3;
+    int d;
+    int* e = &a;
+​
+    d = parameterMystery1X(a, *b, &c);
+    parameterMystery1X(c, d, b);
+    parameterMystery1X(*b, *e, &d);
+​
+    cout << a << " " << b << " " << *b << " " << c << " " << d << " " << e << " " << *e << endl;
+    cout << &a << " " << &b << " " << &c << " " << &d << " " << &e << endl;
+​
+    return 0;
+}
+
+line 1: 9 -3 1 0xcc00
+line 2: -7 9 6 0x555500
+line 3: 5 -7 2 0xdd00
+line 4: 5 0x555500 9 -3 -7 0xaa00 5
+line 5: 0xaa00 0xbb00 0xcc00 0xdd00 0xee00

@@ -1,0 +1,24 @@
+For each call to the following recursive function, write the output that is produced as it would appear on the console.
+
+void recursionMystery10(int x) {
+    cout << x << " ";
+    if (x <= 1) {
+        cout << "END ";
+    } else if (x % 2 == 0) {
+        recursionMystery10(x / 2);
+        cout << "+ ";
+    } else {
+        cout << "[ ";
+        recursionMystery10(3 * x + 1);
+        cout << "] ";
+    }
+}
+
+recursionMystery10(1);
+Answer: 1 END 
+
+recursionMystery10(4);
+Answer: 4 2 1 END + + 
+
+recursionMystery10(3);
+Answer: 3 [ 10 5 [ 16 8 4 2 1 END + + + + ] + ] 

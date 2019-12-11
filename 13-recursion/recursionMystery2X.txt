@@ -1,0 +1,30 @@
+For each of the calls to the following recursive function below, indicate what output is produced:
+
+void recursionMystery2X(int n) {
+    cout << "( ";
+    helper(n);
+    cout << ") ( ";
+    helper(n);
+    cout << ")";
+}
+​
+void helper(int n) {
+    if (n <= 1) {
+        cout << n << " = ";
+    } else {
+        cout << (n % 2) << " ";
+        helper(n / 2);
+        cout << n << " ";
+        n = n - 1;
+    }
+}
+
+recursionMystery2X(8);	
+Answer: ( 0 0 0 1 = 2 4 8 ) ( 0 0 0 1 = 2 4 8 )
+
+recursionMystery2X(25);	
+Answer: ( 1 0 0 1 1 = 3 6 12 25 ) ( 1 0 0 1 1 = 3 6 12 25 )
+
+recursionMystery2X(46);	
+Answer: ( 0 1 1 1 0 1 = 2 5 11 23 46 ) ( 0 1 1 1 0 1 = 2 5 11 23 46 )
+

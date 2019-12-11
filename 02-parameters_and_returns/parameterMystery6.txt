@@ -1,0 +1,31 @@
+The following code produces 4 lines of output. What is the output? Write each line of output as it would appear on the console.
+
+string parameterMystery6(int a, int& b, string& c, string d) {
+    a++;
+    b++;
+    c += "x";
+    d += "x";
+    cout << d << " " << c << " " << b << " " << a << endl;
+    return d;
+}
+​
+int main() {
+    int a = 1;
+    int b = 20;
+    int x = 300;
+    string c = "c";
+    string d = "d";
+    string z = "z";
+​
+    parameterMystery6(a, b, c, d);
+    parameterMystery6(b, x, z, c);
+    d = parameterMystery6(x, a, c, z);
+​
+    cout << a << " " << b << " " << x << " " << c << " " << d << " " << z << endl;
+    return 0;
+}
+
+line 1: dx cx 21 2
+line 2: cxx zx 301 22
+line 3: zxx cxx 2 302
+line 4: 2 21 301 cxx zxx zx

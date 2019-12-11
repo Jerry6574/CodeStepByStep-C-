@@ -1,0 +1,76 @@
+Consider the following classes; assume that each is defined in its own file.
+
+class Tongue : public Mouth {
+public:
+    virtual void m1() {
+        cout << "T 1" << endl;
+        Mouth::m1();
+    }
+​
+    virtual void m3() {
+        cout << "T 3" << endl;
+    }
+};
+​
+class Nose : public Tongue {
+public:
+    virtual void m1() {
+        cout << "N 1" << endl;
+    }
+​
+    virtual void m2() {
+        Tongue::m2();
+        cout << "N 2" << endl;
+    }
+​
+    virtual void m3() {
+        cout << "N 3" << endl;
+    }
+};
+​
+class Mouth {
+public:
+    virtual void m1() {
+        cout << "M 1" << endl;
+    }
+​
+    virtual void m2() {
+        cout << "M 2" << endl;
+        m1();
+    }
+};
+​
+class Ear : public Tongue {
+public:
+    virtual void m2() {
+        m1(); 	// calls Tongue::m1()
+        m1();
+    }
+​
+    virtual void m4() {
+        cout << "E 4" << endl;
+    }
+};
+
+Now assume that the following variables are defined:
+
+Mouth*  var1 = new Nose();
+Tongue* var2 = new Ear();
+Mouth*  var3 = new Tongue();
+Tongue* var4 = new Nose();
+
+In the table below, indicate in the right-hand column the output produced by the statement in the left-hand column. If the statement produces more than one line of output, indicate the line breaks with slashes as in "x / y / z" to indicate three lines of output with "x" followed by "y" followed by "z". If the statement does not compile, write "COMPILER ERROR". If a statement would crash at runtime or cause unpredictable behavior, write "CRASH".
+
+								Output:
+var1->m2();						M 2/N 1/N 2   // calls superclass and subclass m2()
+var2->m2();						T 1/M 1/T 1/M 1
+var2->m3();						T 3
+var2->m4();						COMPILER ERROR
+var4->m1();						N 1
+var4->m3();						N 3
+((Nose*) var1)->m2();			M 2/N 1/N 2
+((Tongue*) var1)->m3();			N 3
+((Ear*) var1)->m4();			CRASH
+((Nose*) var2)->m4();			COMPILER ERROR
+((Tongue*) var3)->m1();			T 1/M 1
+((Nose*) var4)->m3();			N 3

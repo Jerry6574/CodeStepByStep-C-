@@ -1,0 +1,20 @@
+Write the output produced by the following function when passed each of the following vectors:
+
+void collectionMystery4(Vector<int>& v) {
+    for (int i = 1; i < v.size(); i += 2) {
+        if (v[i - 1] >= v[i]) {
+            v.remove(i);
+            v.insert(0, 0);
+        }
+    }
+    cout << v << endl;
+}
+
+Input:  {10, 20, 10, 5}	
+Output: {0, 10, 20, 10}
+
+Input:  {8, 2, 9, 7, -1, 55}
+Output: {0, 0, 8, 9, -1, 55}
+
+Input:  {0, 16, 9, 1, 64, 25, 25, 14, 0}
+Output: {0, 0, 0, 0, 16, 9, 64, 25, 0}

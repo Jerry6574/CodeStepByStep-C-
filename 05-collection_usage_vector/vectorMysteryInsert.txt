@@ -1,0 +1,21 @@
+What are the contents of the vector after the following code executes?
+
+Vector<int> vec;
+for (int i = 1; i <= 5; i++) {
+    vec += 2 * i;         // {2, 4, 6, 8, 10}
+}
+int size = vec.size();
+for (int i = 0; i < size; i++) {
+    vec.insert(i, 42);    // add 42 at index i
+}
+cout << vec << endl;
+
+vector contents
+a. {2, 4, 6, 8, 10, 42, 42, 42, 42, 42}
+b. {42, 42, 42, 42, 42, 2, 4, 6, 8, 10}
+c. {42, 2, 42, 4, 42, 6, 42, 8, 42, 10}
+d. {2, 42, 4, 42, 6, 42, 8, 42, 10, 42}
+e. other
+
+Answer:
+b. {42, 42, 42, 42, 42, 2, 4, 6, 8, 10}

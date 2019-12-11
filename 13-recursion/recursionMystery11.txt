@@ -1,0 +1,22 @@
+For each call to the following recursive function, write the output that is produced as it would appear on the console.
+
+void recursionMystery11(int x) {
+    if (x < 10) {
+        cout << "[" << x << "] ";
+    } else {
+        cout << x << " ( ";
+        recursionMystery11(x / 2);
+        cout << " , ";
+        recursionMystery11(x % 2);
+        cout << " ) ";
+    }
+}
+
+recursionMystery11(17);	
+Answer: 17 ( [8]  , [1]  )
+
+recursionMystery11(31);	
+Answer: 31 ( 15 ( [7]  , [1]  )  , [1]  )
+
+recursionMystery11(62);	
+Answer: 62 ( 31 ( 15 ( [7]  , [1]  )  , [1]  )  , [0]  ) 

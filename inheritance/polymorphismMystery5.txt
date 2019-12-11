@@ -1,0 +1,79 @@
+Consider the following classes; assume that each is defined in its own file.
+
+class Tuolumne {
+public:
+    virtual void m1() {
+        cout << "T 1" << endl;
+        m2();
+    }
+​
+    virtual void m2() {
+        cout << "T 2" << endl;
+    }
+};
+​
+class Glacier : public Muir {
+public:
+    virtual void m3() {
+        cout << "G 3" << endl;
+        m1();
+    }
+​
+    virtual void m4() {
+        cout << "G 4" << endl;
+    }
+};
+​
+class Muir : public Vernal {
+public:
+    virtual void m2() {
+        cout << "M 2" << endl;
+        Vernal::m2();
+    }
+​
+    virtual void m4() {
+        cout << "M 4" << endl;
+    }
+};
+​
+class Vernal : public Tuolumne {
+public:
+    virtual void m1() {
+        Tuolumne::m1();
+        cout << "V 1" << endl;
+    }
+​
+    virtual void m3() {
+        cout << "V 3" << endl;
+    }
+};
+
+Now assume that the following variables are defined:
+
+Vernal*   var1 = new Glacier();
+Tuolumne* var2 = new Vernal();
+Vernal*   var3 = new Muir();
+Tuolumne* var4 = new Muir();
+Tuolumne* var5 = new Tuolumne();
+
+In the table below, indicate in the right-hand column the output produced by the statement in the left-hand column. If the statement produces more than one line of output, indicate the line breaks with slashes as in "x / y / z" to indicate three lines of output with "x" followed by "y" followed by "z". If the statement does not compile, write "COMPILER ERROR". If a statement would crash at runtime or cause unpredictable behavior, write "CRASH".
+
+										Output:
+var2->m1();								T 1/T 2/V 1
+var2->m2();								T 2
+var2->m3();								COMPILER ERROR
+var1->m1();								T 1/M 2/T 2/V 1
+var1->m2();								M 2/T 2
+var1->m3();								G 3/T 1/M 2/T 2/V 1
+var1->m4();								COMPILER ERROR
+var4->m1();								T 1/M 2/T 2/V 1
+var4->m2();								M 2/T 2
+var3->m2();								M 2/T 2
+var3->m3();								V 3
+var5->m4();								COMPILER ERROR
+((Vernal*) var2)->m1();					T 1/T 2/V 1
+((Vernal*) var2)->m3();					V 3
+((Glacier*) var5)->m3();				CRASH
+((Tuolumne*) var3)->m3();				COMPILER ERROR
+((Muir*) var1)->m4();					G 4
+((Glacier*) var1)->m4();				G 4

@@ -1,0 +1,71 @@
+Author: Marty Stepp (on 2018/03/19)
+
+Consider the following classes; assume that each is defined in its own file.
+
+class Becca : public Arie {
+public:
+    virtual void m2() {
+        cout << "B2 ";
+    }
+​
+    virtual void m3() {
+        cout << "B3 ";
+        Arie::m2();
+    }
+};
+​
+class Arie {
+public:
+    virtual void m1() {
+        cout << "A1 ";
+        m2();
+    }
+​
+    virtual void m2() {
+        cout << "A2 ";
+    }
+};
+​
+class JuanPablo :
+           public Lauren {
+public:
+    virtual void m2() {
+        cout << "JP2 ";
+        Becca::m2();
+    }
+};
+​
+class Lauren : public Becca {
+public:
+    virtual void m1() {
+        cout << "L1 ";
+        Arie::m1();
+    }
+​
+    virtual void m4() {
+        m2();
+        cout << "L4 ";
+    }
+};
+Now assume that the following variables are defined:
+
+Arie*  var1 = new Becca();
+Becca* var2 = new Lauren();
+Arie*  var3 = new JuanPablo();
+
+In the table below, indicate in the right-hand column the output produced by the statement in the left-hand column. If the statement produces more than one line of output, indicate the line breaks with slashes as in "x / y / z" to indicate three lines of output with "x" followed by "y" followed by "z". If the statement does not compile, write "COMPILER ERROR". If a statement would crash at runtime or cause unpredictable behavior, write "CRASH".
+
+								Output:
+var1->m1();						A1 B2 
+var1->m3();						COMPILER ERROR
+var2->m2();						B2 
+var2->m3();						B3 A2 
+var2->m4();						COMPILER ERROR
+var3->m2();						JP2 B2 
+var3->m4();						COMPILER ERROR
+((Becca*) var1)->m3();			B3 A2 
+((Lauren*) var1)->m4();			CRASH
+((Becca*) var1)->m4();			COMPILER ERROR
+((Arie*) var2)->m3();			COMPILER ERROR
+((Lauren*) var2)->m4();			B2 L4 
+((Lauren*) var3)->m4();			JP2 B2 L4 

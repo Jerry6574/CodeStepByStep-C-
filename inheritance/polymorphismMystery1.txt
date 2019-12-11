@@ -1,0 +1,85 @@
+Consider the following classes; assume that each is defined in its own file.
+
+class Eddie : public Kurt {
+public:
+    virtual void b() {
+        a(); // calls superclass method
+        cout << "E B" << endl;
+    }
+​
+    virtual void c() {
+        cout << "E C" << endl;
+    }
+};
+​
+class Kurt {
+public:
+    virtual void a() {
+        cout << "K A" << endl;
+        c();  // calls subclass method
+    }
+​
+    virtual void c() {
+        cout << "K C" << endl;
+    }
+};
+​
+class Chris : public Jerry {
+public:
+    virtual void b() {
+        a();
+        cout << "C B" << endl;
+    }
+​
+    virtual void c() {
+        cout << "C C" << endl;
+        Jerry::c();
+    }
+​
+    virtual void d() {
+        cout << "C D" << endl;
+        c();
+    }
+};
+​
+class Jerry : public Kurt {
+public:
+    virtual void a() {
+        cout << "J A" << endl;
+    }
+​
+    virtual void c() {
+        cout << "J C" << endl;
+        Kurt::c();
+    }
+};
+
+Now assume that the following variables are defined:
+
+Kurt*  var1 = new Jerry();
+Jerry* var2 = new Chris();
+Kurt*  var3 = new Eddie();
+Kurt*  var4 = new Chris();
+Kurt*  var5 = new Kurt();
+
+In the table below, indicate in the right-hand column the output produced by the statement in the left-hand column. If the statement produces more than one line of output, indicate the line breaks with slashes as in "x / y / z" to indicate three lines of output with "x" followed by "y" followed by "z". If the statement does not compile, write "COMPILER ERROR". If a statement would crash at runtime or cause unpredictable behavior, write "CRASH".
+
+							Output:
+var1->a();					J A
+var1->b();					COMPILER ERROR
+var1->c();					J C/K C
+var2->a();					J A
+var2->b();					COMPILER ERROR
+var2->c();					C C/J C/K C
+var3->a();					K A/E C
+var3->b();					COMPILER ERROR
+var4->a();					J A
+var5->a();					K A/K C
+((Jerry*) var1)->a();		J A
+((Jerry*) var1)->b();		COMPILER ERROR
+((Chris*) var2)->d();		C D/C C/J C/K C
+((Eddie*) var3)->b();		K A/E C/E B
+((Jerry*) var4)->a();		J A
+((Jerry*) var4)->b();		COMPILER ERROR
+((Jerry*) var5)->b();		COMPILER ERROR
+	

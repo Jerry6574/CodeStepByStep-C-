@@ -1,0 +1,23 @@
+For each call to the following recursive function, write the output that is produced as it would appear on the console.
+
+void recursionMystery12(int n) {
+    if (n == 0) {
+        cout << " * " << n;
+    } else {
+        int a = n % 10;
+        if (a % 2 == 0) {
+            cout << " + (" << a;
+            recursionMystery12(n / 10);
+            cout << ")";
+        } else {
+            recursionMystery12(n / 10);
+            cout << " - " << a;
+        }
+    }
+}
+
+recursionMystery12(427);
+Answer:  + (2 + (4 * 0)) - 7
+	
+recursionMystery12(823419605);	
+Answer:  + (0 + (6 + (4 + (2 + (8 * 0)) - 3) - 1 - 9)) - 5

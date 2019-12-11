@@ -1,0 +1,38 @@
+For each of the calls to the following recursive function below, indicate the final state of the string that was passed, as well as the value that was returned by the function:
+
+int recursionMystery4X(string& s, int i, int j, char k) {
+    if (i >= j) {
+        return i;
+    } else if (s[i] < k) {
+        return recursionMystery4X(s, i + 1, j, k);
+    } else if (s[j] > k) {
+        return recursionMystery4X(s, i, j - 1, k);
+    } else {
+        int temp = s[i];
+        s[i] = s[j];
+        s[j] = temp;
+        return recursionMystery4X(s, i + 1, j - 1, k);
+    }
+}
+
+// a)
+//          0123456
+string s = "OXIDIZE";
+recursionMystery4X(s, 0, 6, 'K')
+​
+// b)
+//          01234567890123456
+string s = "TCTTCGTCCGAACCAGA";
+recursionMystery4X(s, 0, 16, 'F')
+
+s after call a)	
+Answer: EIIDXZO
+
+value returned from call a)	
+Answer: 3
+
+s after call b)	
+Answer: ACACCCACCAGTGTTGT
+
+value returned from call b)	
+Answer: 10

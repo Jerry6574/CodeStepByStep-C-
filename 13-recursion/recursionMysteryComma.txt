@@ -1,0 +1,26 @@
+For each call to the following recursive function, write the output that would be produced, as it would appear on the console.
+
+void recursionMysteryComma(int x, int y) {
+    if (y == 1) {
+        cout << x;
+    } else {
+        cout << (x * y) << ", ";
+        recursionMysteryComma(x, y - 1);
+        cout << ", " << (x * y);
+    }
+}
+
+recursionMysteryComma(4, 1); 
+Answer: 4
+
+recursionMysteryComma(4, 2);
+Answer: 8, 4, 8
+	
+recursionMysteryComma(8, 2);	
+Answer: 16, 8, 16
+
+recursionMysteryComma(4, 3);	
+Answer: 12, 8, 4, 8, 12
+
+recursionMysteryComma(3, 4);	
+Answer: 12, 9, 6, 3, 6, 9, 12

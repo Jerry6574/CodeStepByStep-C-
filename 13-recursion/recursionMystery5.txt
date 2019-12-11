@@ -1,0 +1,22 @@
+For each of the calls to the following recursive function below, indicate what value is returned:
+
+int recursionMystery5(int a, int b) {
+    if (a < 10 || b < 10) {
+        return a + b;
+    } else if (a > b) {
+        int x = recursionMystery5(a / 2, b / 2);
+        int y = recursionMystery5(b, a - b);
+        return x + y;
+    } else {
+        return recursionMystery5(a, b / 2);
+    }
+}
+
+recursionMystery5(11, 18)
+Answer: 20
+
+recursionMystery5(26, 12)	
+Answer: 38
+
+recursionMystery5(32, 48)	
+Answer: 62

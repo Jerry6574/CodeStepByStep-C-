@@ -1,0 +1,10 @@
+Write the state of the elements of the vector below after each of the first 4 passes of the outermost loop of the insertion sort algorithm. (After the first pass, 2 elements should be sorted. After the second pass, 3 elements should be sorted. And so on.)
+
+            // index    0   1   2   3   4   5   6   7
+Vector<int> numbers = {29, 17,  3, 94, 46,  8, -4, 12};
+insertionSort(numbers);
+
+after pass 1: {17, 29, 3, 94, 46, 8, -4, 12}
+after pass 2: {3, 17, 29, 94, 46, 8, -4, 12}
+after pass 3: {3, 17, 29, 94, 46, 8, -4, 12}
+after pass 4: {3, 17, 29, 46, 94, 8, -4, 12}

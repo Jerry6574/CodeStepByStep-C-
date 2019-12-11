@@ -1,0 +1,20 @@
+Write the output produced by the following function when passed each of the following maps:
+
+void collectionMystery5(Map<string, int>& m1, Map<int, string>& m2) {
+    Map<string, string> result;
+    for (string s : m1) {
+        if (m2.containsKey(m1[s])) {
+            result[s] = m2[m1[s]];
+        }
+    }
+    cout << result << endl;
+}
+
+m1: {"bar":1, "cat":2, "foo":3, "mum":4}, m2: {1:"earth", 2:"wind", 3:"air", 4:"fire"}	
+Output: {"bar":"earth", "cat":"wind", "foo":"air", "mum":"fire"}
+
+m1: {"five":105, "four":104, "one":101, "six":106, "three":103, "two":102}, m2: {99:"uno", 101:"dos", 103:"tres", 105:"cuatro"}	
+Output: {"five":"cuatro", "one":"dos", "three":"tres"}
+
+m1: {"a":42, "b":9, "c":7, "d":15, "e":11, "f":24, "g":7}, m2: {1:"four", 3:"score", 5:"and", 7:"seven", 9:"years", 11:"ago"}	
+Output: {"b":"years", "c":"seven", "e":"ago", "g":"seven"}

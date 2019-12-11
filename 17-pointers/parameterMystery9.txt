@@ -1,0 +1,25 @@
+The following code produces 3 lines of output. What is the output? Write each line of output as it would appear on the console.
+
+int parameterMystery9(int* b, int& c, int a) {
+    (*b)++;
+    c += 3;
+    a += 5;
+    cout << c << " " << a << " " << *b << endl;
+    return a;
+}
+​
+int main() {
+    int a =   10;
+    int b =  200;
+    int c = 3000;
+​
+    parameterMystery9(&a, b, c);
+    int d = parameterMystery9(&b, c, a);
+    cout << a << " " << b << " " << c << " " << d << endl;
+​
+    return 0;
+}
+
+line 1: 203 3005 11
+line 2: 3003 16 204
+line 3: 11 204 3003 16

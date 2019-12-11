@@ -1,0 +1,27 @@
+For each call to the following recursive function, write the output that would be produced, as it would appear on the console.
+
+void recursionMysteryPrintDigits(int x) {
+    if (x < 10) {
+        cout << x;
+    } else {
+        int y = x % 10;
+        cout << y;
+        recursionMysteryPrintDigits(x / 10);
+        cout << y;
+    }
+}
+
+recursionMysteryPrintDigits(7);	
+Answer: 7
+
+recursionMysteryPrintDigits(38);	
+Answer: 838
+
+recursionMysteryPrintDigits(194);	
+Answer: 49194
+
+recursionMysteryPrintDigits(782);	
+Answer: 28782
+
+recursionMysteryPrintDigits(3842);	
+Answer: 2483842

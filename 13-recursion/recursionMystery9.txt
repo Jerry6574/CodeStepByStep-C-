@@ -1,0 +1,22 @@
+For each call to the following recursive function, write the output that is produced as it would appear on the console.
+
+int recursionMystery9(int x, int y) {
+    if (x < 0) {
+        return -recursionMystery9(-x, y);
+    } else if (y < 0) {
+        return -recursionMystery9(x, -y);
+    } else if (x == 0 && y == 0) {
+        return 0;
+    } else {
+        return 100 * recursionMystery9(x / 10, y / 10) + 10 * (x % 10) + y % 10;
+    }
+}
+
+recursionMystery9(12, 49);	
+Answer: 1429
+
+recursionMystery9(73, -8);	
+Answer: -7038
+
+recursionMystery9(-248, -3795);	
+Answer: 3274985

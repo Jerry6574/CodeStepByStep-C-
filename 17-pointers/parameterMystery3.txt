@@ -1,0 +1,27 @@
+The following code produces 4 lines of output. What is the output? Write each line of output as it would appear on the console.
+
+void parameterMystery3(int* a, int& b, int* c) {
+    *a += *c;
+    (*c)++;
+    b--;
+    cout << b << " " << *a << " " << *c << endl;
+}
+​
+int main() {
+    int w = 0;
+    int x = 1;
+    int y = 3;
+    int z = 7;
+​
+    parameterMystery3(&y, x, &w);
+    parameterMystery3(&x, y, &z);
+    parameterMystery3(&w, w, &z);
+​
+    cout << w << " " << x << " " << y << " " << z << endl;
+    return 0;
+}
+
+line 1: 0 3 1
+line 2: 2 7 8
+line 3: 8 8 9
+line 4: 8 7 2 9

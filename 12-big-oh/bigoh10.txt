@@ -1,0 +1,58 @@
+Give a tight bound of the nearest runtime complexity class for each of the following code fragments in Big-Oh notation, in terms of the variable N. In other words, write the code's growth rate as N grows. Write a simple expression that gives only a power of N using a caret ^ character for exponentiation, such as O(N^2) to represent O(N2) or O(log N) to represent O(log2 N). Do not write an exact calculation of the runtime such as O(2N3 + 4N + 14).
+
+
+// a)
+int sum1 = 0;
+for (int i = 0; i < N; i++) {
+    for (int j = 0; j < i; j++) {
+        sum1++;
+    }
+    for (int j = 0; j < i; j++) {
+        sum1++;
+    }
+}
+cout << sum1 << endl;
+answer:  O(N^2)
+ 
+// b)
+int sum2 = 0;
+for (int i = 0; i < 999; i++) {
+    for (int j = 0; j < i; j++) {
+        sum2++;
+    }
+}
+for (int j = 1; j < N - 2; j++) {
+    int max = 500;
+    for (int k = 1; k < max; k++) {
+        sum2++;
+    }
+}
+cout << sum2 << endl;
+answer:  O(N)
+ 
+// c)
+Queue<int> queue;
+for (int i = 0; i <= N * N * 3; i++) {
+    queue.enqueue(i);
+}
+HashSet<int> hashset;
+while (!queue.isEmpty()) {
+    int num = queue.dequeue();
+    hashset.add(num);
+}
+cout << "done!" << endl;
+answer:  O(N^2)
+ 
+// d)
+Map<int, int> map;
+Vector<int> vector;
+for (int i = 0; i < N; i++) {
+    vector.add(i);
+}
+while (!vector.isEmpty()) {
+    int num = vector.get(vector.size() - 1);
+    vector.remove(vector.size() - 1);
+    map.put(num, num);
+}
+cout << "done!" << endl;
+answer:  O(NlogN)

@@ -1,0 +1,67 @@
+Consider the following classes; assume that each is defined in its own file.
+
+class Golbez : public Cecil {
+public:
+    virtual void m2() {
+        cout << "Golbez m2" << endl;
+        m1();
+    }
+};
+
+class Rosa : public Cecil {
+public:
+    virtual void m3() {
+        cout << "Rosa m3" << endl;
+        m2();
+    }
+   
+    virtual void m4() {
+        cout << "Rosa m4" << endl;
+    }
+};
+
+class Cecil : public Kain {
+public:
+    virtual void m1() {
+        cout << "Cecil m1" << endl;
+        Kain::m1();
+    }
+​
+    virtual void m3() {
+        cout << "Cecil m3" << endl;
+        m2();
+    }
+};
+
+class Kain {
+public:
+    virtual void m1() {
+        cout << "Kain m1" << endl;
+    }
+
+    virtual void m2() {
+        m1();
+        cout << "Kain m2" << endl;
+    }
+};
+Now assume that the following variables are defined:
+
+Kain*  var1 = new Cecil();
+Cecil* var2 = new Rosa();
+Kain*  var3 = new Golbez();
+Cecil* var4 = new Golbez();
+
+In the table below, indicate in the right-hand column the output produced by the statement in the left-hand column. If the statement produces more than one line of output, indicate the line breaks with slashes as in "x / y / z" to indicate three lines of output with "x" followed by "y" followed by "z". If the statement does not compile, write "COMPILER ERROR". If a statement would crash at runtime or cause unpredictable behavior, write "CRASH".
+
+									Output:
+var1->m1();							Cecil m1/Kain m1
+var1->m2();							Cecil m1/Kain m1/Kain m2
+var1->m3();							COMPILER ERROR
+var2->m3();							Rosa m3/Cecil m1/Kain m1/Kain m2
+var3->m2();							Golbez m2/Cecil m1/Kain m1
+var3->m4():							COMPILER ERROR
+var4->m3();							Cecil m3/Golbez m2/Cecil m1/Kain m1
+((Cecil*) var1)->m3();				Cecil m3/Cecil m1/Kain m1/Kain m2
+((Rosa*) var1)->m4();				CRASH
+((Rosa*) var2)->m4();				Rosa m4
+((Golbez*) var3)->m4();				COMPILER ERROR

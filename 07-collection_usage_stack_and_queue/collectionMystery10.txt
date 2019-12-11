@@ -1,0 +1,31 @@
+Write the output produced by the following function when passed each of the following stacks and ints. Note: A stack displays/prints in {bottom ... top} order, and a queue displays in {front ... back} order.
+
+void collectionMystery10(Stack<int>& stack, int n) {
+    Stack<int> stack2;
+    Queue<int> queue;
+​
+    while (stack.size() > n) {
+        queue.enqueue(stack.pop());
+    }
+    while (!stack.isEmpty()) {
+        int element = stack.pop();
+        stack2.push(element);
+        if (element % 2 == 0) {
+            queue.enqueue(element);
+        }
+    }
+    while (!queue.isEmpty()) {
+        stack.push(queue.dequeue());
+    }
+    while (!stack2.isEmpty()) {
+        stack.push(stack2.pop());
+    }
+​
+    cout << stack << endl;
+}
+
+{1, 2, 3, 4, 5, 6}, n=3	
+Output: {6, 5, 4, 2, 1, 2, 3}
+
+{67, 29, 115, 84, 33, 71, 90}, n=5	
+Output: {90, 71, 84, 67, 29, 115, 84, 33}

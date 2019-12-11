@@ -1,0 +1,43 @@
+Consider the following crudely-drawn graph, and answer the following questions about it:
+
+A <--> B <-- C
+|      ^
+V      |
+D <--> E
+
+Is the graph directed or undirected?	
+a. directed
+b. undirected
+Answer: a. directed
+
+Is the graph weighted or unweighted?	
+a. weighted
+b. unweighted
+Answer: b. unweighted
+
+Is the graph connected?	
+a. not connected
+b. weakly connected
+c. connected
+d. strongly connected
+Answer: b. weakly connected
+
+Is the graph cyclic?	
+a. cyclic
+b. acyclic
+Answer: a. cyclic
+
+What are the in-degree and out-degree of vertex A (as two integers, separated by spaces)?	
+Answer: 1 2
+
+What are the in-degree and out-degree of vertex B?	
+Answer: 3 1
+
+What are the in-degree and out-degree of vertex C?	
+Answer: 0 1
+
+What are the in-degree and out-degree of vertex D?	
+Answer: 2 1
+
+What are the in-degree and out-degree of vertex E?	
+Answer: 1 2

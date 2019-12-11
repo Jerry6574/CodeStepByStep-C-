@@ -1,0 +1,69 @@
+Consider the following classes; assume that each is defined in its own file.
+
+class Computer : public Animal {
+public:
+    virtual void two() {
+        cout << "C 2" << endl;
+        Mineral::two();
+    }
+​
+    virtual void three() {
+        cout << "C 3" << endl;
+    }
+};
+
+class Mineral : public Vegetable {
+public:
+    virtual void one() {
+        cout << "M 1" << endl;
+    }
+​
+    virtual void two() {
+        cout << "M 2" << endl;
+    }
+};
+
+class Animal : public Mineral {
+public:
+    virtual void one() {
+        cout << "A 1" << endl;
+        two();
+    }
+    virtual void three() {
+        cout << "A 3" << endl;
+    }
+};
+
+class Vegetable {
+public:
+    virtual void two() {
+        cout << "V 2" << endl;
+    }
+};
+
+Now assume that the following variables are defined:
+
+Vegetable* var1 = new Computer();
+Mineral*   var2 = new Animal();
+Vegetable* var3 = new Vegetable();
+Animal*    var4 = new Computer();
+
+In the table below, indicate in the right-hand column the output produced by the statement in the left-hand column. If the statement produces more than one line of output, indicate the line breaks with slashes as in "x / y / z" to indicate three lines of output with "x" followed by "y" followed by "z". If the statement does not compile, write "COMPILER ERROR". If a statement would crash at runtime or cause unpredictable behavior, write "CRASH".
+
+										Output: 
+var1->one();							COMPILER ERROR
+var1->two();							C 2/M 2
+var1->three();							COMPILER ERROR
+var2->one();							A 1/M 2
+var2->two();							M 2
+var3->one();							COMPILER ERROR
+var3->two();							V 2
+var4->one();							A 1/C 2/M 2
+var4->three();							C 3
+((Animal*) var1)->one();				A 1/C 2/M 2
+((Mineral*) var1)->two();				C 2/M 2
+((Computer*) var1)->three();			C 3
+((Vegetable*) var2)->three();			COMPILER ERROR
+((Animal*) var2)->one();				A 1/M 2
+((Computer*) var4)->two();				C 2/M 2
+((Computer*) var4)->three();			C 3

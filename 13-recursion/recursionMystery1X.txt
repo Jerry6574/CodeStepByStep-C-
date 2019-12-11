@@ -1,0 +1,31 @@
+For each of the calls to the following recursive function below, indicate what output is produced:
+
+void recursionMystery1X(int x, int y) {
+    if (y <= 0) {
+        cout << "0 ";
+    } else if (x > y) {
+        cout << x << " ";
+        recursionMystery1X(x - y, y);
+    } else {
+        recursionMystery1X(x, y - x);
+        cout << y << " ";
+        if (y % 3 == 0) {
+            recursionMystery1X(x, y - x);
+        }
+    }
+}
+
+recursionMystery1X(6, 3);	
+Answer: 6 0 3 0
+
+recursionMystery1X(2, 3);	
+Answer: 2 0 1 3 2 0 1
+
+recursionMystery1X(5, 8);	
+Answer: 5 2 0 1 3 2 0 1 8
+
+recursionMystery1X(21, 12);	
+Answer: 21 9 6 0 3 0 12 9 6 0 3 0
+
+recursionMystery1X(3, 10);	
+Answer: 3 2 0 1 4 7 10

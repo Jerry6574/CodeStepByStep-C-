@@ -1,0 +1,78 @@
+Consider the following classes; assume that each is defined in its own file.
+
+class Grinch : public Frosty {
+public:
+    virtual void m2() {
+        cout << "Grinch m2   ";
+        m1();
+    }
+​
+    virtual void m3() {
+        cout << "Grinch m3   ";
+        Frosty::m3();
+    }
+​
+    virtual void m4() {
+        cout << "Grinch m4   ";
+        m3();
+    }
+};
+​
+class Frosty : public Santa {
+public:
+    virtual void m1() {
+        cout << "Frosty m1   ";
+    }
+​
+    virtual void m3() {
+        cout << "Frosty m3   ";
+    }
+};
+​
+class Santa {
+public:
+    virtual void m1() {
+        m3();
+        cout << "Santa m1   ";
+    }
+​
+    virtual void m3() {
+        cout << "Santa m3   ";
+    }
+};
+​
+class Rudolph : public Santa {
+public:
+    virtual void m2() {
+        cout << "Rudolph m2   ";
+        m1();
+    }
+​
+    virtual void m3() {
+        cout << "Rudolph m3   ";
+        Santa::m3();
+    }
+};
+Now assume that the following variables are defined:
+
+Santa*  var1 = new Frosty();
+Frosty* var2 = new Grinch();
+Santa*  var3 = new Grinch();
+Santa*  var4 = new Rudolph();
+
+In the table below, indicate in the right-hand column the output produced by the statement in the left-hand column. If the statement produces more than one line of output, indicate the line breaks with slashes as in "x / y / z" to indicate three lines of output with "x" followed by "y" followed by "z". If the statement does not compile, write "COMPILER ERROR". If a statement would crash at runtime or cause unpredictable behavior, write "CRASH".
+
+								Output: 
+var1->m1();						Frosty m1   
+var1->m2();						COMPILER ERROR
+var1->m3();						Frosty m3   
+var2->m1();						Frosty m1   
+var2->m2();						COMPILER ERROR
+var2->m3();						Grinch m3   Frosty m3   
+var3->m2();						COMPILER ERROR
+var4->m1();						Rudolph m3   Santa m3   Santa m1   
+((Frosty*) var1)->m1();			Frosty m1   
+((Frosty*) var1)->m4();			COMPILER ERROR
+((Grinch*) var1)->m4();			CRASH
+((Grinch*) var2)->m4();			Grinch m4   Grinch m3   Frosty m3
+((Rudolph*) var3)->m2();		CRASH

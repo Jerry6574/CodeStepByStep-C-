@@ -1,0 +1,79 @@
+Consider the following classes; assume that each is defined in its own file.
+
+class Homer : public Bart {
+public:
+    virtual void m2() {
+        cout << "H 2" << endl;
+        Bart::m2();
+    }
+​
+    virtual void m4() {
+        cout << "H 4" << endl;
+    }
+};
+​
+class Bart : public Lisa {
+public:
+    virtual void m1() {
+        Lisa::m1();
+        cout << "B 1" << endl;
+    }
+​
+    virtual void m3() {
+        cout << "B 3" << endl;
+    }
+};
+​
+class Marge : public Homer {
+public:
+    virtual void m3() {
+        cout << "M 3" << endl;
+        m1();
+    }
+​
+    virtual void m4() {
+        cout << "M 4" << endl;
+    }
+};
+​
+class Lisa {
+public:
+    virtual void m1() {
+        cout << "L 1" << endl;
+        m2();
+    }
+​
+    virtual void m2() {
+        cout << "L 2" << endl;
+    }
+};
+Now assume that the following variables are defined:
+
+Lisa* var1 = new Bart();
+Bart* var2 = new Marge();
+Lisa* var3 = new Homer();
+Bart* var4 = new Homer();
+Lisa* var5 = new Lisa();
+
+
+In the table below, indicate in the right-hand column the output produced by the statement in the left-hand column. If the statement produces more than one line of output, indicate the line breaks with slashes as in "x / y / z" to indicate three lines of output with "x" followed by "y" followed by "z". If the statement does not compile, write "COMPILER ERROR". If a statement would crash at runtime or cause unpredictable behavior, write "CRASH".
+
+								Output:
+var1->m1();						L 1/L 2/B 1
+var1->m2();						L 2
+var1->m3();						COMPILER ERROR
+var2->m1();						L 1/H 2/L 2/B 1
+var2->m2();						H 2/L 2
+var2->m3();						M 3/L 1/H 2/L 2/B 1
+var2->m4();						COMPILER ERROR
+var3->m1();						L 1/H 2/L 2/B 1
+var3->m2();						H 2/L 2
+var4->m2();						H 2/L 2
+var4->m3();						B 3
+var4->m4();						COMPILER ERROR
+((Bart*) var1)->m1();			L 1/L 2/B 1
+((Bart*) var1)->m3();			B 3
+((Marge*) var5)->m3();			CRASH
+((Lisa*) var4)->m3();			COMPILER ERROR
+((Homer*) var2)->m4();			M 4
+((Marge*) var2)->m4();			M 4

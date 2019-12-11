@@ -1,0 +1,76 @@
+Consider the following classes; assume that each is defined in its own file.
+
+class Eliza : public Burr {
+public:
+    virtual void m2() {
+        cout << "E2" << endl;
+        Hamilton::m2();
+    }
+   
+    virtual void m3() {
+        Burr::m3();
+        cout << "E3" << endl;
+    }
+};
+
+class George : public Eliza {
+public:
+    virtual void m1() {
+        cout << "G1" << endl;
+        Burr::m1();
+    }
+	
+    virtual void m4() {
+        cout << "G4" << endl;
+        m2();
+    }
+};
+
+class Hamilton {
+public:
+    virtual void m1() {
+        cout << "H1" << endl;
+        m2();
+    }
+
+    virtual void m2() {
+        cout << "H2" << endl;
+    }
+};
+
+class Burr : public Hamilton {
+public:
+    virtual void m1() {
+        Hamilton::m1();
+        cout << "B1" << endl;
+    }
+
+    virtual void m3() {
+        cout << "B3" << endl;
+    }
+};
+Now assume that the following variables are defined:
+
+Hamilton* var1 = new Burr();
+Hamilton* var2 = new Eliza();
+Burr* var3 = new Eliza();
+Eliza* var4 = new George();
+
+In the table below, indicate in the right-hand column the output produced by the statement in the left-hand column. If the statement produces more than one line of output, indicate the line breaks with slashes as in "x / y / z" to indicate three lines of output with "x" followed by "y" followed by "z". If the statement does not compile, write "COMPILER ERROR". If a statement would crash at runtime or cause unpredictable behavior, write "CRASH".
+
+								Output:
+var1->m1();						H1/H2/B1
+var1->m2();						H2
+var2->m1();						H1/E2/H2/B1
+var2->m2();						E2/H2
+var2->m3();						COMPILER ERROR
+var3->m1();						H1/E2/H2/B1
+var3->m2();						E2/H2
+var3->m3();						B3/E3
+var4->m1();						G1/H1/E2/H2/B1
+var4->m4();						COMPILER ERROR
+((Burr*) var1)->m3();			B3
+((Eliza*) var2)->m4();			COMPILER ERROR
+((George*) var4)->m4();			G4/E2/H2
+((Eliza*) var3)->m3();			B3/E3
+((George*) var2)->m4();			CRASH

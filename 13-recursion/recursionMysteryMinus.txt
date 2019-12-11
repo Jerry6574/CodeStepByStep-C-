@@ -1,0 +1,18 @@
+For each call to the following recursive function, write the value that would be returned.
+
+int recursionMysteryMinus(int x, int y) {
+    if (x < y) {
+        return x;
+    } else {
+        return recursionMysteryMinus(x - y, y);
+    }
+}
+
+(Side note: What is the function really doing?)
+returns x % y
+
+recursionMysteryMinus(6, 13): 6
+recursionMysteryMinus(14, 10): 4
+recursionMysteryMinus(37, 10): 7
+recursionMysteryMinus(8, 2): 0
+recursionMysteryMinus(50, 7): 1

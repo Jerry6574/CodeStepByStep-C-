@@ -1,0 +1,25 @@
+Write the output produced by the following function when passed each of the following maps:
+
+void collectionMystery2(Map<string, string>& m) {
+    Set<string> s;
+    for (string key : m) {
+        if (m[key] != key) {
+            s.add(m[key]);
+        } else {
+            s.remove(m[key]);
+        }
+    }
+    cout << s << endl;
+}
+
+{"cast":"plaster", "house":"brick", "sheep":"wool", "wool":"wool"}
+Output: {"brick", "plaster"}
+
+{"ball":"blue", "corn":"yellow", "emerald":"green", "grass":"green", "winkie":"yellow"}
+Output: {"blue", "green", "yellow"}
+
+{"apple":"peach", "corn":"apple", "peach":"peach", "pie":"fruit", "potato":"peach"}
+Output: {"apple", "fruit", "peach"}
+
+{"cat":"cat", "corgi":"dog", "emu":"animal", "lab":"lair", "lair":"lair", "nyan":"cat"}
+Output: {"animal", "cat", "dog"}

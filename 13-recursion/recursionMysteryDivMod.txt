@@ -1,0 +1,21 @@
+
+For each call to the following recursive function, write the value that would be returned.
+
+int recursionMysteryDivMod(int n) {
+    if (n < 0) {
+        return recursionMysteryDivMod(-n);
+    } else if (n < 10) {
+        return n;
+    } else {
+        return n % 10 + recursionMysteryDivMod(n / 10);
+    }
+}
+
+(Side note: What is the function really doing?)
+Sums the absolute value of each digit of n
+
+recursionMysteryDivMod(8): 8
+recursionMysteryDivMod(74): 11
+recursionMysteryDivMod(-513): 9
+recursionMysteryDivMod(3052): 10
+recursionMysteryDivMod(82534): 22

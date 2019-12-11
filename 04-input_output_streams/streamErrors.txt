@@ -1,0 +1,43 @@
+Suppose an input file named streamErrors-data.txt contains the following text:
+
+Donald Knuth
+M
+76
+Stanford U.
+
+The code below attempts to read the data from the file, but each section has a bug. Correct the code and submit a version that reads the code and prints the values expected as indicated in the comments.
+
+ifstream input;
+input.open("streamErrors-data.txt");
+​
+string name;
+name = input.getline();      // #1   "Donald Knuth"
+cout << name << endl;
+​
+char gender;
+gender = input.get();        // #2   'M'
+cout << gender << endl;
+​
+int age;
+getline(input, age);
+stringToInteger(age);        // #3   76
+cout << age << endl;
+​
+string jobtitle;
+input >> jobtitle;           // #4   "Stanford U."
+cout << jobtitle << endl;
+
+
+Type your C++ solution code here:
+
+ifstream input;
+input.open("streamErrors-data.txt");
+
+
+string new1, line;
+
+while(getline(input,line))
+{
+   cout << line <<endl;
+   new1=line;
+}  

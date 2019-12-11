@@ -1,0 +1,58 @@
+Give a tight bound of the nearest runtime complexity class for each of the following code fragments in Big-Oh notation, in terms of the variable N. In other words, write the code's growth rate as N grows. Write a simple expression that gives only a power of N using a caret ^ character for exponentiation, such as O(N^2) to represent O(N2) or O(log N) to represent O(log2 N). Do not write an exact calculation of the runtime such as O(2N3 + 4N + 14).
+
+
+// a)
+int sum1 = 0;
+for (int i = 1; i <= N; i++) {
+    int k = 20 * 20 * 20;
+    for (int j = 1; j <= k; j++) {
+        sum1++;
+    }
+}
+cout << sum1 << endl;
+answer:  O(N)
+ 
+// b)
+Vector<int> v2;
+for (int i = 1; i <= N * 2; i++) {
+    for (int j = 1; j <= N / 2; j++) {
+        v2.insert(0, i);
+    }
+    v2.clear();
+}
+while (!v2.isEmpty()) {
+    v2.remove(v2.size() - 1);
+}
+cout << "done!" << endl;
+answer:  O(N^3)
+ 
+// c)
+Map<int, int> map3;
+for (int i = 1; i <= N + N; i++) {
+    map3.put(i, i/2);
+}
+​
+Set<int> set3;
+for (int i = 1; i <= N; i++) {
+    int value = map3.get(i);
+    set3.add(value);
+    map3.remove(i);
+}
+cout << "done!" << endl;
+answer:  O(NlogN)
+ 
+// d)
+HashSet<int> hashset4;
+Stack<int> stack4;
+int total = 99999;
+for (int i = 0; i < 2 * N; i++) {
+    for (int j = 0; j < 2 * total; j++) {
+        hashset4.add(i * i);
+        stack4.push(i);
+    }
+}
+while (!stack4.isEmpty()) {
+    hashset4.remove(stack4.pop());
+}
+cout << "done!" << endl;
+answer:  O(N)

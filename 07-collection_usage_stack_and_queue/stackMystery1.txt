@@ -1,0 +1,25 @@
+What is the output of the following code?
+
+Stack<int> s;
+s.push(7);
+s.push(10);
+cout << s.peek() << " ";
+cout << s.pop() << " ";
+s.push(3);
+s.push(5);
+cout << s.pop() << " ";
+cout << s.size() << " ";
+cout << s.peek() << " ";
+s.push(8);
+cout << s.pop() << " ";
+cout << s.pop() << " ";
+
+output
+a. 7 10 5 3 3 8 3
+b. 7 7 10 3 3 3 5
+c. 10 10 5 4 5 8 8
+d. 10 10 5 2 3 8 3
+e. other
+
+Answer: 
+d. 10 10 5 2 3 8 3

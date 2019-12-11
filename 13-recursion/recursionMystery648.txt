@@ -1,0 +1,20 @@
+Given the function below, what is the output of the following call? (What is the function really doing?)
+
+int mystery(int n) {
+    if (n < 10) {
+        return n;
+    } else {
+        int a = n / 10;
+        int b = n % 10;
+        return mystery(a + b);
+    }
+}
+
+mystery(648);
+a. 9
+b. 648
+c. 72
+d. 54
+e. 8
+
+Answer: a. 9

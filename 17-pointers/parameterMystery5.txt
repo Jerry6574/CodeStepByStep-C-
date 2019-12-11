@@ -1,0 +1,37 @@
+The following code produces 4 lines of output. What is the output? Write each line of output as it would appear on the console.
+
+For the purposes of this problem, assume that the variables in main are stored at the following memory addresses:
+
+main's b variable is stored at address 0xbb00
+main's d variable is stored at address 0xdd00
+main's e variable is stored at address 0xee00
+main's f variable is stored at address 0xff00
+
+int parameterMystery5(int* d, int e, int& f) {
+    f += 10;
+    *d = e + 2;
+    e--;
+    cout << e << " " << d << " " << *d << " " << f << endl;
+    return e + f;
+}
+
+int main() {
+    int b = 0;
+    int d = -1;
+    int e = 5;
+    int f = 2;
+
+    b = parameterMystery5(&d, e, f);
+    parameterMystery5(&f, d, e);
+    parameterMystery5(&b, f, d);
+
+    cout << d << " " << e << " " << f << " " << b << endl;
+    cout << endl;
+
+    return 0;
+}
+
+line 1: 4 0xdd00 7 12
+line 2: 6 0xff00 9 15
+line 3: 8 0xbb00 11 17
+line 4: 17 15 9 11

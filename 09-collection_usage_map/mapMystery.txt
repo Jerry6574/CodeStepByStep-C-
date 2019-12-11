@@ -1,0 +1,21 @@
+What is the output of the following code?
+
+Map<string, string> map;
+map.put("K", "Schwarz");
+map.put("C", "Lee");
+map.put("M", "Sahami");
+map.put("M", "Stepp");
+map.remove("Stepp");
+map.remove("K");
+map.put("J", "Cain");
+map.remove("C, Lee");
+cout << map << endl;
+
+output
+a. {"J":"Cain", "M":"Sahami"}
+b. {"C":"Lee", "J":"Cain", "M":"Stepp", "M":"Sahami"}
+c. {"C":"Lee", "J":"Cain", "M":"Stepp"}
+d. {"J":"Cain", "C":"Lee", "M":"Sahami", "M":"Stepp"}
+
+Answer:
+c. {"C":"Lee", "J":"Cain", "M":"Stepp"}

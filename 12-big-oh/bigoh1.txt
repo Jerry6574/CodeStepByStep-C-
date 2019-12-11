@@ -1,0 +1,72 @@
+Give a tight bound of the nearest runtime complexity class for each of the following code fragments in Big-Oh notation, in terms of the variable N. In other words, write the code's growth rate as N grows. Write a simple expression that gives only a power of N using a caret ^ character for exponentiation, such as O(N^2) to represent O(N2) or O(log N) to represent O(log2 N). Do not write an exact calculation of the runtime such as O(2N3 + 4N + 14).
+
+
+// a)
+int sum = 0;
+for (int i = 1; i <= N + 2; i++) {
+    sum++;
+}
+for (int j = 1; j <= N * 2; j++) {
+    sum += 5;
+}   
+cout << sum << endl;
+
+answer: O(N)
+ 
+// b)
+int sum = 0;
+for (int i = 1; i <= N - 5; i++) {
+    for (int j = 1; j <= N - 5; j += 2) {
+        sum++;
+    }
+}
+cout << sum << endl;
+
+answer: O(N^2)
+ 
+// c)
+int sum = N;
+for (int i = 0; i < 1000000; i++) {
+    for (int j = 1; j <= i; j++) {
+        sum += N;
+    }
+    for (int j = 1; j <= i; j++) {
+        sum += N;
+    }
+    for (int j = 1; j <= i; j++) {
+        sum += N;
+    }
+}
+cout << sum << endl;
+
+answer: O(1)
+ 
+// d)
+Vector<int> list;
+for (int i = 1; i <= N * N; i++) {
+    for (int j = 1; j <= N; j++) {
+        list.add(i + j);
+    }
+}
+​
+for (int i = 1; i <= 2 * N; i++) {
+    list.remove(list.size() - 1);
+}
+cout << "done!" << endl;
+
+answer:  O(N^3)
+ 
+// e)
+HashSet<int> set1;
+for (int i = 1; i <= N; i++) {
+    set1.add(i);
+}
+​
+Set<int> set2;
+for (int i = 1; i <= N; i++) {
+    set1.remove(i);
+    set2.add(i + N);
+}
+cout << "done!" << endl;
+
+answer: O(NlogN)

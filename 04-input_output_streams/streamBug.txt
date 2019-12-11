@@ -1,0 +1,23 @@
+The following code attempts to read and print the contents of a file. But it contains a bug. Fix the code so that it reads and prints the file contents properly. Do not use a break or return statement in your solution.
+
+ifstream input;
+input.open("streambug-test1-data.txt");
+string line;
+while (!input.fail()) {
+    getline(input, line);
+    cout << line << endl;
+}
+input.close();
+
+
+
+Type your C++ solution code here:
+
+ifstream input;
+input.open("streambug-test1-data.txt");
+string line;
+while (!input.eof()) {
+    getline(input, line);
+    cout << line << endl;
+}
+input.close();

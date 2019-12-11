@@ -1,0 +1,53 @@
+Give a tight bound of the nearest runtime complexity class for each of the following code fragments in Big-Oh notation, in terms of the variable N. In other words, write the code's growth rate as N grows. Write a simple expression that gives only a power of N using a caret ^ character for exponentiation, such as O(N^2) to represent O(N2) or O(log N) to represent O(log2 N). Do not write an exact calculation of the runtime such as O(2N3 + 4N + 14).
+
+
+// a)
+int sum = 0;
+for (int i = 1; i <= N; i++) {
+    for (int j = i; j >= 0; j--) {
+        sum++;
+    }
+}
+answer:  O(N^2)
+ 
+// b)
+Vector<int> vec;
+Set<int> set;
+for (int i = 1; i < N + 10; i++) {
+    set.add(i * N);
+}
+for (int k : set) {
+    vec.insert(0, k);
+}
+answer:  O(N^2)
+ 
+// c)
+Queue<int> queue;
+Map<int, int> map;
+for (int i = 1; i <= N * N; i++) {
+    queue.enqueue(i * i);
+}
+while (!queue.isEmpty()) {
+    int x = queue.dequeue();
+    if (!map.containsKey(x)) {
+        map.put(x, x * x);
+    }
+}
+answer:  O(N^2LogN)
+ 
+// d)
+Vector<int> vec;
+for (int i = 0; i < N; i++) {
+    for (int j = 0; j < 100; j++) {
+        vec.add(i * j);
+    }
+}
+for (int i = 0; i < 100 * 100; i++) {
+    for (int j = 0; j < i / 2; j++) {
+        cout << i * j << endl;
+    }
+}
+while (vec.size() > 0) {
+    vec.remove(vec.size() - 1);
+}
+answer:  O(N)

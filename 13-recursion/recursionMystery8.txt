@@ -1,0 +1,25 @@
+For each call to the following recursive function, write the output that is produced as it would appear on the console. Hint: To avoid re-tracing out long chains of calls, it may help you to look at your own notes on call results that you have already previously computed, and re-use those results as applicable.
+
+void recursionMystery8(int n) {
+    if (n <= 1) {
+        cout << n;
+    } else {
+        cout << n << " = (";
+        recursionMystery8(n / 2 + n % 2);
+        cout << ", ";
+        recursionMystery8(n / 2);
+        cout << ")";
+    }
+}
+
+recursionMystery8(3);	
+Answer: 3 = (2 = (1, 1), 1)
+
+recursionMystery8(4);	
+Answer: 4 = (2 = (1, 1), 2 = (1, 1))
+
+recursionMystery8(6);	
+Answer: 6 = (3 = (2 = (1, 1), 1), 3 = (2 = (1, 1), 1))
+
+recursionMystery8(7);	
+Answer: 7 = (4 = (2 = (1, 1), 2 = (1, 1)), 3 = (2 = (1, 1), 1))
